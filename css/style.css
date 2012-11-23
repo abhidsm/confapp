@@ -1,4 +1,4 @@
-#event .header h1 {
+#event .header h1, #speaker .header h1 {
    margin-left: 0px;
    margin-right: 0px;
 }
