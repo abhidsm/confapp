@@ -1,0 +1,12 @@
+#event .header h1 {
+   margin-left: 0px;
+   margin-right: 0px;
+}
+
+.grid .block {
+   padding: 2%;
+}
+
+.grid .block.time {
+   color: red;
+}
