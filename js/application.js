@@ -1,4 +1,4 @@
-$(function() {
+GDataToJSONConverter = function(){
 
 	getSpeakers = function(entry) {
 		var speakers = new Speakers();
@@ -45,19 +45,24 @@ $(function() {
 		return day;
 	};
 
-	getDays = function() {
+	this.getDays = function(callback) {
 		var days = new Days();
 		for(var index in googleSpreadSheet.sheets) {
 			$.getJSON("http://spreadsheets.google.com/feeds/list/" + googleSpreadSheet.key + "/" + googleSpreadSheet.sheets[index] + "/public/values?alt=json-in-script&callback=?", function(data) {
 				var day = getDay(data);
 				days.push(day);
+				if (days.size() == 1) {
+					callback(days);
+				};
 			});
 		}
 		return days;
 	};
 
-	conference = new Conference();
-	conference.days = getDays();
+};
+
+$(function() {
+	applicationView = new ApplicationView();
 });
 
 
