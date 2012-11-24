@@ -17,6 +17,6 @@ var HomePageView = Backbone.View.extend({
 		return this;
 	},
 	some: function() {
-		alert("hi");
+		talkDetailsView = new TalkDetailsView(conference);
 	}	
 });
