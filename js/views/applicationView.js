@@ -1,15 +1,20 @@
-var ApplicationView = Backbone.View.extend({
+var ApplicationView = Backbone.View.extend(
+    {
 	el: 'body',
 	initialize: function() {
-		this.gdata = new GDataToJSONConverter();
-		this.gdata.getDays(this.render);
+            _.bindAll(this, 'prepareData');
+	    this.gdata = new GDataToJSONConverter();
+	    this.gdata.getDays(this.prepareData);
 	},
-	render: function(days) {
-		this.conference = new Conference({
-			days: days
-		});
-		this.homePageView = new HomePageView(this.conference);
-		$('body').append(this.homePageView.$el);
-		$.mobile.changePage(this.homePageView.$el, {changeHash:false});
-	}
-});
+
+	render: function() {
+	    this.homePageView = new HomePageView(this.conference);
+	},
+        
+        prepareData: function(days){
+	    this.conference = new Conference({
+			                         days: days
+		                             });
+            this.render();
+        }
+    });

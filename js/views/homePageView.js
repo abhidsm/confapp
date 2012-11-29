@@ -1,22 +1,28 @@
-var HomePageView = Backbone.View.extend({
+var HomePageView = Backbone.View.extend(
+    {
 	tagName : "div",
 	id : 'home',
 	className : "home-page",
+
 	initialize : function(conference) {
-		this.template = _.template($("#home-page-template").html(),{
-			day1: conference.get('days').first().get('title')
-		});
-		this.$el.attr('data-role', 'page');
-		this.render();
+            this.days = conference.get('days');
+	    this.template = _.template($("#home-page-template").html(),{days: this.days});
+	    this.$el.attr('data-role', 'page');
+	    this.render();
 	},
-	events : {
-		'click .ui-btn-text' : 'some'
-	},
+
 	render : function(){
-		this.$el.html(this.template);
-		return this;
-	},
-	some: function() {
-		talkDetailsView = new TalkDetailsView(conference);
+	    this.$el.html(this.template);
+            var topBarView = new TopBarView();
+            this.$el.prepend(topBarView.$el);
+            var self = this;
+            this.days.each(
+                function(day, index){
+                    var dayView = new DayView(day);
+                    self.$el.find('ul').append(dayView.$el);
+                });
+
+	    $('body').append(this.$el);
+	    $.mobile.changePage(this.$el, {changeHash:false});
 	}	
-});
+    });

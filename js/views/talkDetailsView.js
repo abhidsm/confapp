@@ -1,25 +1,29 @@
- var TalkDetailsView = Backbone.View.extend({
+var TalkDetailsView = Backbone.View.extend(
+    {
 	tagName : "div",
-	id : 'event',
-	initialize : function(conference) {
-		this.conference = conference;
-		this.template = _.template($("#event-page-template").html(),{
-			day1: this.conference.get('days').first().get('title')
-		});
-		this.$el.attr('data-role', 'page');
-		this.render();
-	},
+	id : 'talk-details',
+
 	events : {
-		'click .ui-btn-text' : 'some'
 	},
+
+	initialize : function(talk) {
+	    this.talk = talk;
+	    this.template = _.template($("#talkdetails-view-template").html(), this.talk.toJSON());
+	    this.$el.attr('data-role', 'page');
+	    this.render();
+	},
+
 	render : function(){
-		this.$el.html(this.template);
-		$('body').append(this.$el);
-		$.mobile.changePage(this.$el, {changeHash:false});
-	},
-	some: function() {
-		this.homePageView = new HomePageView(this.conference);
-		$('body').append(this.homePageView.$el);
-		$.mobile.changePage(this.homePageView.$el, {changeHash:false});
+	    this.$el.html(this.template);
+            var topBarView = new TopBarView();
+            this.$el.prepend(topBarView.$el);
+            var self = this;
+            this.talk.get('speakers').each(
+                function(speaker){
+                    var speakerView = new SpeakerView(speaker);
+                    self.$el.find('.content-primary ul').append(speakerView.$el);
+                });
+	    $('body').append(this.$el);
+	    $.mobile.changePage(this.$el, {changeHash:false});
 	}	
-});
+    });

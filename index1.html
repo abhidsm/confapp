@@ -19,95 +19,96 @@
     <script type="text/javascript" src="js/collections/days.js"></script>
     <script type="text/javascript" src="js/collections/talks.js"></script>
     <script type="text/javascript" src="js/collections/speakers.js"></script>
+    <script type="text/javascript" src="js/views/topBarView.js"></script>
     <script type="text/javascript" src="js/views/homePageView.js"></script>
     <script type="text/javascript" src="js/views/applicationView.js"></script>
+    <script type="text/javascript" src="js/views/dayView.js"></script>
+    <script type="text/javascript" src="js/views/talkListView.js"></script>
+    <script type="text/javascript" src="js/views/talkView.js"></script>
     <script type="text/javascript" src="js/views/talkDetailsView.js"></script>
+    <script type="text/javascript" src="js/views/speakerView.js"></script>
     <script type="text/javascript" src="js/application.js"></script>
   </head>
   <body>
-    <script type="text/template" id = "home-page-template">
-    
 
-      <div data-role="header">
-        <h1>The Lean Startup Conf</h1>
-      </div><!-- /header -->
-            
-      <div data-role="content"> 
-              <ul data-role="listview" data-split-icon="arrow-r"
-                  data-iconpos="right" data-theme="a" data-split-theme="a">
-                <li>
-                  <a href="#event-list">Sunday Night</a> 
-                  <a href="#"></a>
-                </li>
-                <li>
-                  <a href="index.html">Day One</a>
-                  <a href="#"></a>
-                </li>
-                <li>
-                  <a href="index.html">Day Two</a>
-                  <a href="#" data-iconpos="notext"></a>
-                </li>
-              </ul>
-      </div><!-- /content -->
-            
-    
-
+    <script type="text/template" id = "topbar-view-template">
+      <a href="#" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+      <h1>The Lean Startup Conf</h1>
     </script>
 
-     
-    <script type="text/template" id = "event-page-template">
+    <script type="text/template" id = "home-page-template">
+      <div data-role="content"> 
+              <ul data-role="listview" data-split-icon="arrow-r"
+                  data-iconpos="right" data-theme="a"
+                  data-split-theme="a">
+              </ul>
+      </div><!-- /content -->
+    </script>
 
-    <div class="header" data-role="header" data-theme="b">
-      <a href="index.html" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
-      <h1>The Lean Startup Conf</h1>
-    </div><!-- /header -->
+    <script type="text/template" id = "day-template">
+      <a href="#event-list"><%= day.get('title') %></a> 
+      <a href="#"></a>
+    </script>
 
-    <div data-role="navbar"  data-theme="c">
-      <ul>
-  <li><a href="a.html">Lean Startup in the Enterprise</a></li>
-      </ul>
-    </div><!-- /navbar -->
-
-    <div class="ui-grid-a grid">
-      <div class="ui-block-a block speakers"><strong><em>SPEAKERS</em></strong></div>
-      <div class="ui-block-b block time"><strong><em>9:00am - 12:30pm</em></strong></div>
-    </div><!-- /grid-b -->
-
-    <div data-role="content">        
-      <div class="content-primary"> 
+    <script type="text/template" id = "talklist-view-template">
+      <div data-role="content">	
         <ul data-role="listview" data-split-icon="arrow-r"
-            data-split-theme="a" data-theme="a">
-    <li><a href="speaker_details.html">
-        <img src="http://jquerymobile.com/demos/1.2.0/docs/lists/images/album-bb.jpg" />
-        <h3>Broken Bells</h3>
-        <p>Broken Bells</p>
-      </a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
-    </li>
-    <li><a href="speaker_details.html">
-        
-        <img src="http://jquerymobile.com/demos/1.2.0/docs/lists/images/album-hc.jpg" />
-        <h3>Warning</h3>
-        <p>Hot Chip</p>
-      </a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
-    </li>
-    <li><a href="speaker_details.html">
-        <img src="http://jquerymobile.com/demos/1.2.0/docs/lists/images/album-p.jpg" />
-        <h3>Wolfgang Amadeus Phoenix</h3>
-        <p>Phoenix</p>
-      </a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
-    </li>
+            data-iconpos="right" data-theme="a" data-split-theme="a">
         </ul>
-      </div>
-    </div><!-- /content -->
+      </div><!-- /content -->
+    </script>
+    
+    <script type="text/template" id="talk-view-template">
+      <a href="#">
+        <h3 class="program-name"><%= title %></h3>
+        <p class="speakers-name">
+          <%= 
+              speakers.map(
+                           function(speaker){
+                             return " "+speaker.get('name');
+                           })
+          %>
+        </p>
+        <p class="time"><%= time %></p>
+      </a>
+      <a href="#" data-iconpos="notext"></a>
+    </script>
+     
+    <script type="text/template" id="talkdetails-view-template">
+      <div data-role="navbar"  data-theme="c">
+        <ul>
+	  <li><a href="#"><%= title %></a></li>
+        </ul>
+      </div><!-- /navbar -->
 
-    <div class="ui-grid-a grid">
-      <div class="ui-block-a block description-title"><strong><em>DESCRIPTION</em></strong></div>
-    </div><!-- /grid-b -->
-    <div class="ui-grid-solo grid">
-      <div class="ui-block-a block description">Lean Startup techniques have tremendous promise—and have delivered tremendous value—in the enterprise. But applying these techniques inside large organizations means grappling with obstacles that small firms never encounter. From functional silos to risk-averse managers, from compliance officers to global markets, practitioners who have tried to make headway can find frustration at every turn.</div>
-      <div class="ui-block-a block description">In this workshop, Giff Constable, Jeff Gothelf, and Josh Seiden—plus special guests—will present case studies, discuss lessons learned, and lead a lively round table discussion that will further your understanding of Lean Startup in enterprise environments and provide concrete advice you can apply to the challenges you face in your organizations. Bring your success stories and your lessons learned; bring your questions and ideas. Experienced practitioners and newcomers welcome.</div>
-    </div><!-- /grid-b -->
+      <div class="ui-grid-a grid">
+        <div class="ui-block-a block speakers"><strong><em>SPEAKERS</em></strong></div>
+        <div class="ui-block-b block time"><strong><em><%= time %></em></strong></div>
+      </div><!-- /grid-b -->
+      
+      <div data-role="content">        
+        <div class="content-primary">	
+          <ul data-role="listview" data-split-icon="arrow-r"
+              data-split-theme="a" data-theme="a">
+          </ul>
+        </div>
+      </div><!-- /content -->
 
-  </script>
+      <div class="ui-grid-a grid">
+        <div class="ui-block-a block description-title"><strong><em>DESCRIPTION</em></strong></div>
+      </div><!-- /grid-b -->
+      <div class="ui-grid-solo grid">
+        <div class="ui-block-a block description"><%= description %></div>
+      </div><!-- /grid-b -->
+    </script>
+
+    <script type="text/template" id="speaker-view-template">
+      <a href="#">
+	<img src="<%= image%>" />
+	<h3><%= name %></h3>
+	<p><%= company %></p>
+      </a>
+      <a href="#"></a>
+    </script>
   </body>
 </html>
