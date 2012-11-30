@@ -32,6 +32,27 @@
   </head>
   <body>
 
+    <div class="splash">
+      <div class="splash-main">
+        <div class="splash-text">
+          <div class="text-line1">
+            The
+          </div>
+          <div class="text-line2">
+            Lean StartUp
+          </div>
+          <div class="text-line3">
+            Conference
+          </div>
+        </div>
+        <img src="images/logo.png" />
+        <div class="splash-footer">
+          DECEMBER 3-4, 2012 <span class=dot>.</span> INTERCONTINENTAL SF
+        </div>
+      </div>
+    </div>
+
+
     <script type="text/template" id = "topbar-view-template">
       <a href="#" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
       <h1>The Lean Startup Conf</h1>
@@ -118,19 +139,17 @@
           <ul data-role="listview" data-split-icon="arrow-r"
               data-split-theme="a" data-theme="a">
 	    <li>
-              <a href="#">
 	        <img src="<%= image %>" />
 	        <h3><%= name %></h3>
 	        <p><%= company %></p>
-	      </a>
 	    </li>
           </ul>
         </div>
       </div><!-- /content -->
       <div data-role="navbar">
         <ul>
-	  <li><a href="#" data-theme="b"><em><%= companyurl %></em></a></li>
-	  <li><a href="#" data-theme="b">@<em><%= twitterid %></em></a></li>
+	  <li><a href="http://<%= companyurl %>" data-theme="b"><em><%= companyurl %></em></a></li>
+	  <li><a href="http://twitter.com/<%= twitterid %>" data-theme="b"><em><%= twitterid %></em></a></li>
         </ul>
       </div><!-- /navbar -->
 

@@ -1,4 +1,4 @@
-#event .header h1, #speaker .header h1 {
+#event .header h1, #speaker .header h1, #home .header h1, #talk-list .header h1 {
    margin-left: 0px;
    margin-right: 0px;
 }
@@ -9,4 +9,53 @@
 
 .grid .block.time {
    color: red;
+}
+
+body, html{
+    height: 100%;
+}
+
+.splash{
+    background-color: black;
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: center;
+    min-height: 100%;
+}
+
+.splash-main{
+    margin: 10% auto;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+}
+
+.splash-text{
+    position: absolute;
+    font-weight: bold;
+    font-size: 2em;
+    left: 18%;
+    top: 16%;
+    text-align: left;
+}
+
+.text-line1{
+    margin-left: 35px;
+}
+
+.text-line2{
+    font-size: 1.1em;
+}
+
+.text-line3{
+    margin-left: 50px;
+}
+
+.splash-footer{
+    font-size: 0.8em;
+    margin-top: 15px;
+}
+
+.dot{
+    font-size: 3em;
 }
