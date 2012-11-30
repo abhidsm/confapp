@@ -22,7 +22,8 @@ var TalkView = Backbone.View.extend(
 	},
 
 	showTalkDetails: function() {
-	    var talkDetailsView = new TalkDetailsView(this.talk);
+            appRouter.navigate("#talks/"+this.talk.cid, {trigger: true});
+//	    var talkDetailsView = new TalkDetailsView(this.talk);
 	}
     });
   

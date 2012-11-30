@@ -6,7 +6,30 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript"
+    src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      //removed this part
+      document.addEventListener("backbutton", function(){
+      if (window.history.length > 0) {
+      window.history.back();
+      return false;
+      }
+      navigator.app.exitApp();
+      }, true);
+      
+      // Since we are using the backbone router we want to disable
+      // auto link routing of jquery mobile.
+      // The code below for mobileinit
+      // notice the last two settings
+      $(document).bind("mobileinit", function() {
+      $.mobile.ajaxEnabled = false;
+      $.mobile.hashListeningEnabled = false;
+      $.mobile.pushStateEnabled = false;
+      $.mobile.changePage.defaults.changeHash = false;
+      });
+    </script>
+
     <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
     <script type="text/javascript" src="js/lib/underscore.js"></script>
     <script type="text/javascript" src="js/lib/backbone.js"></script>
@@ -156,5 +179,6 @@
     <script type="text/template" id="talkbyspeaker-view-template">
       <a href="#" data-theme="b"><%= title %></a>
     </script>
+
   </body>
 </html>
