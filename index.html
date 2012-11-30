@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <script type="text/javascript" src="js/lib/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
     <script type="text/javascript" src="js/lib/underscore.js"></script>
     <script type="text/javascript" src="js/lib/backbone.js"></script>
@@ -27,6 +27,7 @@
     <script type="text/javascript" src="js/views/talkView.js"></script>
     <script type="text/javascript" src="js/views/talkDetailsView.js"></script>
     <script type="text/javascript" src="js/views/speakerView.js"></script>
+    <script type="text/javascript" src="js/views/speakerDetailsView.js"></script>
     <script type="text/javascript" src="js/application.js"></script>
   </head>
   <body>
@@ -116,26 +117,27 @@
         <div class="content-primary">	
           <ul data-role="listview" data-split-icon="arrow-r"
               data-split-theme="a" data-theme="a">
-	    <li><a href="index.html">
-	        <img src="http://jquerymobile.com/demos/1.2.0/docs/lists/images/album-bb.jpg" />
-	        <h3>Broken Bells</h3>
-	        <p>Broken Bells</p>
-	      </a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+	    <li>
+              <a href="#">
+	        <img src="<%= image %>" />
+	        <h3><%= name %></h3>
+	        <p><%= company %></p>
+	      </a>
 	    </li>
           </ul>
         </div>
       </div><!-- /content -->
       <div data-role="navbar">
         <ul>
-	  <li><a href="a.html" data-theme="b"><em>theleanstartup.com</em></a></li>
-	  <li><a href="b.html" data-theme="b">@<em>ericries</em></a></li>
+	  <li><a href="#" data-theme="b"><em><%= companyurl %></em></a></li>
+	  <li><a href="#" data-theme="b">@<em><%= twitterid %></em></a></li>
         </ul>
       </div><!-- /navbar -->
 
       <div class="ui-grid-a grid">
         <div class="ui-block-a block talks-title"><strong>TALKS</strong></div>
       </div><!-- /grid-b -->
-      <div data-role="navbar">
+      <div data-role="navbar" class="talks">
 
       </div><!-- /navbar -->
 
@@ -144,14 +146,14 @@
         <div class="ui-block-a block about-title"><strong>ABOUT</strong></div>
       </div><!-- /grid-b -->
       <div class="ui-grid-solo grid">
-        <div class="ui-block-a block about">Lean Startup techniques have tremendous promise—and have delivered tremendous value—in the enterprise. But applying these techniques inside large organizations means grappling with obstacles that small firms never encounter. From functional silos to risk-averse managers, from compliance officers to global markets, practitioners who have tried to make headway can find frustration at every turn.</div>
+        <div class="ui-block-a block about">
+          <%= about %>
+        </div>
       </div><!-- /grid-b -->
     </script>
 
     <script type="text/template" id="talkbyspeaker-view-template">
-      <ul>
-	<li><a href="a.html" data-theme="b">Opening Remarks</a></li>
-      </ul>
+      <a href="#" data-theme="b"><%= title %></a>
     </script>
   </body>
 </html>

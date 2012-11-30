@@ -18,12 +18,12 @@ var SpeakerDetailsView = Backbone.View.extend(
             var topBarView = new TopBarView();
             this.$el.prepend(topBarView.$el);
             var self = this;
-            var talkDetails = this.speaker.get('talksDetails');
+            var talks = this.speaker.get('talks');
             
-            this.talk.get('speakers').each(
-                function(speaker){
-                    var speakerView = new SpeakerView(speaker);
-                    self.$el.find('.content-primary ul').append(speakerView.$el);
+            talks.each(
+                function(talk){
+                    var talkView = new TalkView(talk, 'speaker-details');
+                    self.$el.find('.talks').append($('<ul class="talk"></ul>').append(talkView.$el));
                 });
 	    $('body').append(this.$el);
 	    $.mobile.changePage(this.$el, {changeHash:false});

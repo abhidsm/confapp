@@ -3,12 +3,16 @@ var TalkView = Backbone.View.extend(
 	tagName : "li",
 
 	events : {
-	    'click .ui-btn-text' : 'showTalkDetails'
+	    'click a' : 'showTalkDetails'
 	},
 
-	initialize : function(talk) {
+	initialize : function(talk, from) {
             this.talk = talk;
-            this.template = _.template($("#talk-view-template").html(), this.talk.toJSON());
+            var templateName = "#talk-view-template";
+            if(from == 'speaker-details'){
+                templateName = "#talkbyspeaker-view-template";
+            }
+            this.template = _.template($(templateName).html(), this.talk.toJSON());
 	    this.render();
 	},
 

@@ -17,7 +17,7 @@ var TalkListView = Backbone.View.extend(
             var self = this;
             this.talks.each(
                 function(talk){
-                    var talkView = new TalkView(talk);
+                    var talkView = new TalkView(talk, 'talk-list');
                     self.$el.find('ul').append(talkView.$el);
                 });
 	    $('body').append(this.$el);
