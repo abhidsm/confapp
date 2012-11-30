@@ -20,7 +20,7 @@ var TopBarView = Backbone.View.extend(
 	},
 
         showHomePage: function(){
-            applicationView.render();
+            appRouter.navigate("home", {trigger: true});
         }
     });
   
