@@ -1,6 +1,7 @@
 var DayView = Backbone.View.extend(
     {
 	tagName : "li",
+        className: 'day',
 
 	events : {
 	  'click li a' : 'showTalksView'
