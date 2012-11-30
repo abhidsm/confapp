@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>ConfApp</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/style.css" />
@@ -17,7 +17,7 @@
       }
       navigator.app.exitApp();
       }, true);
-      
+
       // Since we are using the backbone router we want to disable
       // auto link routing of jquery mobile.
       // The code below for mobileinit
@@ -83,7 +83,7 @@
     </script>
 
     <script type="text/template" id = "home-page-template">
-      <div data-role="content"> 
+      <div data-role="content">
               <ul data-role="listview" data-split-icon="arrow-r"
                   data-iconpos="right" data-theme="a"
                   data-split-theme="a">
@@ -97,18 +97,18 @@
     </script>
 
     <script type="text/template" id = "talklist-view-template">
-      <div data-role="content">	
+      <div data-role="content">
         <ul data-role="listview" data-split-icon="arrow-r"
             data-iconpos="right" data-theme="a" data-split-theme="a">
         </ul>
       </div><!-- /content -->
     </script>
-    
+
     <script type="text/template" id="talk-view-template">
       <a href="#">
         <h3 class="program-name"><%= title %></h3>
         <p class="speakers-name">
-          <%= 
+          <%=
               speakers.map(
                            function(speaker){
                              return " "+speaker.get('name');
@@ -119,7 +119,7 @@
       </a>
       <a href="#" data-iconpos="notext"></a>
     </script>
-     
+
     <script type="text/template" id="talkdetails-view-template">
       <div data-role="navbar"  data-theme="c">
         <ul class="talk-title">
@@ -131,9 +131,9 @@
         <div class="ui-block-a block speakers"><strong><em>SPEAKERS</em></strong></div>
         <div class="ui-block-b block time"><strong><em><%= time %></em></strong></div>
       </div><!-- /grid-b -->
-      
-      <div data-role="content">        
-        <div class="content-primary">	
+
+      <div data-role="content">
+        <div class="content-primary">
           <ul data-role="listview" data-split-icon="arrow-r"
               data-split-theme="a" data-theme="a">
           </ul>
@@ -158,8 +158,8 @@
     </script>
 
     <script type="text/template" id="speakerdetails-view-template">
-      <div data-role="content">        
-        <div class="content-primary">	
+      <div data-role="content">
+        <div class="content-primary">
           <ul data-role="listview" data-split-icon="arrow-r"
               data-split-theme="a" data-theme="a">
 	    <li>
@@ -199,5 +199,15 @@
       <a href="#" data-theme="b"><%= title %></a>
     </script>
 
-  </body>
+    </body>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36723392-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
 </html>

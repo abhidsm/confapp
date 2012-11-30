@@ -1,5 +1,13 @@
 var AppRouter = Backbone.Router.extend(
     {
+        initialize: function() {
+            return this.bind('all', this._trackPageview);
+        },
+        _trackPageview: function() {
+            var url;
+            url = Backbone.history.getFragment();
+            return _gaq.push(['_trackPageview', "/" + url]);
+        },
         routes: {
             "main": "showHomePage",
             "days/:id": "showTalksListView",
@@ -11,19 +19,19 @@ var AppRouter = Backbone.Router.extend(
             applicationView.render();
         },
 
-        showTalksListView: function(id){ 
+        showTalksListView: function(id){
             var day = applicationView.conference.get('days').getByCid(id);
             var talkListView = new TalkListView(day.get('talks'));
         },
 
         showTalkDetails: function(id){
             var talk = applicationView.currentDay.get('talks').getByCid(id);
-	    var talkDetailsView = new TalkDetailsView(talk);
+	        var talkDetailsView = new TalkDetailsView(talk);
         },
 
         showSpeakerDetails: function(id){
             var speaker = applicationView.conference.get('speakers').getByCid(id);
-	    var speakerDetailsView = new SpeakerDetailsView(speaker);
+	        var speakerDetailsView = new SpeakerDetailsView(speaker);
         }
     });
 // Initiate the router
