@@ -1,14 +1,14 @@
-var TalkDetailsView = Backbone.View.extend(
+var SpeakerDetailsView = Backbone.View.extend(
     {
 	tagName : "div",
-	id : 'event',
+	id : 'speaker',
 
 	events : {
 	},
 
-	initialize : function(talk) {
-	    this.talk = talk;
-	    this.template = _.template($("#talkdetails-view-template").html(), this.talk.toJSON());
+	initialize : function(speaker) {
+	    this.speaker = speaker;
+	    this.template = _.template($("#speakerdetails-view-template").html(), this.speaker.toJSON());
 	    this.$el.attr('data-role', 'page');
 	    this.render();
 	},
@@ -18,6 +18,8 @@ var TalkDetailsView = Backbone.View.extend(
             var topBarView = new TopBarView();
             this.$el.prepend(topBarView.$el);
             var self = this;
+            var talkDetails = this.speaker.get('talksDetails');
+            
             this.talk.get('speakers').each(
                 function(speaker){
                     var speakerView = new SpeakerView(speaker);
