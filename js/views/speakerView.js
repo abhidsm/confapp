@@ -18,7 +18,8 @@ var SpeakerView = Backbone.View.extend(
 	},
 
 	showSpeakerDetailsView: function() {
-	    var speakerDetailsView = new SpeakerDetailsView(this.speaker);
+            appRouter.navigate("#speakers/"+this.speaker.cid, {trigger: true});
+//	    var speakerDetailsView = new SpeakerDetailsView(this.speaker);
 	}
     });
   

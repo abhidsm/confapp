@@ -92,7 +92,7 @@ GDataToJSONConverter = function(){
         var currentLength = self.daysArr.filter(function(value) { return value !== undefined; }).length;
         if( currentLength == googleSpreadSheet.daysSheets.length){
             self.days.add(self.daysArr);
-	    self.callback(self.days);
+	    self.callback(self.days, self.speakers);
         }
     };
 

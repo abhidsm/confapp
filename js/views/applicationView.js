@@ -11,11 +11,13 @@ var ApplicationView = Backbone.View.extend(
 	    this.homePageView = new HomePageView(this.conference);
 	},
         
-        prepareData: function(days){
+        prepareData: function(days, speakers){
 	    this.currentDay = days.at(0);
             this.conference = new Conference({
-			                         days: days
+			                         days: days,
+                                                 speakers: speakers
 		                             });
+//            appRouter.navigate("main", {trigger: true});
             this.render();
         }
     });
