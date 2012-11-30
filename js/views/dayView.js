@@ -3,7 +3,7 @@ var DayView = Backbone.View.extend(
 	tagName : "li",
 
 	events : {
-	    'click .ui-btn-text' : 'showTalksView'
+	  'click li a' : 'showTalksView'
 	},
 
 	initialize : function(day) {
@@ -18,7 +18,8 @@ var DayView = Backbone.View.extend(
 	},
 
 	showTalksView: function() {
-	    var talkListView = new TalkListView(this.day.get('talks'));
+	  applicationView.currentDay = this.day;
+          var talkListView = new TalkListView(this.day.get('talks'));
 	}
     });
   

@@ -3,7 +3,7 @@ var SpeakerView = Backbone.View.extend(
 	tagName : "li",
 
 	events : {
-	    'click .ui-btn-text' : 'showSpeakerDetailsView'
+	    'click li a' : 'showSpeakerDetailsView'
 	},
 
 	initialize : function(speaker) {
