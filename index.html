@@ -98,8 +98,15 @@
 
     <script type="text/template" id = "talklist-view-template">
       <div data-role="content">
+        <ul data-role="listview" data-split-icon="arrow-r"  data-theme="c">
+	  <li>
+	    <h3  class="day-head"><%= daytitle %></h3>
+	  </li>
+        </ul>
+
         <ul data-role="listview" data-split-icon="arrow-r"
-            data-iconpos="right" data-theme="a" data-split-theme="a">
+            data-iconpos="right" data-theme="a" data-split-theme="a"
+            class="talks-ul" >
         </ul>
       </div><!-- /content -->
     </script>

@@ -29,6 +29,14 @@
     padding-bottom: 30px !important;
 }
 
+.day-head{
+    text-align: center;
+}
+
+.talks-ul{
+    margin-top: 14px !important;
+}
+
 .splash{
     background-color: black;
     color: white;

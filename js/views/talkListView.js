@@ -5,7 +5,7 @@ var TalkListView = Backbone.View.extend(
 
 	initialize : function(talks) {
             this.talks = talks;
-	    this.template = _.template($("#talklist-view-template").html(),{});
+	    this.template = _.template($("#talklist-view-template").html(),{daytitle: applicationView.currentDay.get('title')});
 	    this.$el.attr('data-role', 'page');
 	    this.render();
 	},
@@ -18,7 +18,7 @@ var TalkListView = Backbone.View.extend(
             this.talks.each(
                 function(talk){
                     var talkView = new TalkView(talk, 'talk-list');
-                    self.$el.find('ul').append(talkView.$el);
+                    self.$el.find('.talks-ul').append(talkView.$el);
                 });
 	    $('body').append(this.$el);
 	    $.mobile.changePage(this.$el, {changeHash:false});
