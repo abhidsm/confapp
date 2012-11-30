@@ -24,7 +24,7 @@ body, html{
     z-index: 999;
 }
 
-.home-page, #talk-list, .talk-title, #speaker{
+.home-page, #talk-list, .talk-title, .speaker-content{
     margin-top: 44px !important;
 }
 
