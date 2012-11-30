@@ -12,7 +12,8 @@ var ApplicationView = Backbone.View.extend(
 	},
         
         prepareData: function(days){
-	    this.conference = new Conference({
+	    this.currentDay = days.at(0);
+            this.conference = new Conference({
 			                         days: days
 		                             });
             this.render();
