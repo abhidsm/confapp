@@ -184,8 +184,21 @@
       </div><!-- /content -->
       <div data-role="navbar">
         <ul>
-	  <li><a href="http://<%= companyurl %>" data-theme="b"><em><%= companyurl %></em></a></li>
-	  <li><a href="http://twitter.com/<%= twitterid %>" data-theme="b"><em><%= twitterid %></em></a></li>
+          <li>
+          <% if(companyurl.length == 0){ %>
+	  <a href="#" data-theme="b"><em>&nbsp;</em></a>
+          <%}else{%>
+	  <a href="http://<%= companyurl %>" data-theme="b"><em><%= companyurl %></em></a>
+          <%}%>
+          </li>
+	  <li>
+          <% if(twitterid.length == 0){ %>
+	  <a href="#" data-theme="b"><em>&nbsp;</em></a>
+          <%}else{%>
+            <a href="http://twitter.com/<%= twitterid %>"
+            data-theme="b"><em><%= twitterid %></em></a>
+          <%}%>
+          </li>
         </ul>
       </div><!-- /navbar -->
 
