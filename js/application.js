@@ -98,8 +98,12 @@ GDataToJSONConverter = function(){
 
 };
 
-$(function() {
-      applicationView = new ApplicationView();
+$(function(){
+      if($.browser.name == 'msie'){
+          $.mobile.showPageLoadingMsg( $.mobile.pageLoadErrorMessageTheme, "This Browser not yet supported", true );
+      }else{
+          applicationView = new ApplicationView();
+      }
   });
 
 
