@@ -27,8 +27,10 @@ var TalkDetailsView = Backbone.View.extend(
 	    $('body').append(this.$el);
 	    $.mobile.changePage(this.$el, {changeHash:false});
 	},
+
 	showTalksView: function() {
-          var talkListView = new TalkListView(applicationView.currentDay.get('talks'));
+          appRouter.navigate("#days/"+applicationView.currentDay.cid, {trigger: true});
+//          var talkListView = new TalkListView(applicationView.currentDay.get('talks'));
 	}
 	
     });

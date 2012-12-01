@@ -1,13 +1,5 @@
 var AppRouter = Backbone.Router.extend(
     {
-        initialize: function() {
-            return this.bind('all', this._trackPageview);
-        },
-        _trackPageview: function() {
-            var url;
-            url = Backbone.history.getFragment();
-            return _gaq.push(['_trackPageview', "/" + url]);
-        },
         routes: {
             "main": "showHomePage",
             "days/:id": "showTalksListView",
@@ -15,23 +7,49 @@ var AppRouter = Backbone.Router.extend(
             "speakers/:id": "showSpeakerDetails"
         },
 
+        initialize: function() {
+            return this.bind('all', this._trackPageview);
+        },
+
+        _trackPageview: function() {
+            var url;
+            url = Backbone.history.getFragment();
+            return _gaq.push(['_trackPageview', "/" + url]);
+        },
+
         showHomePage: function(){
-            applicationView.render();
+            if (typeof applicationView === 'undefined') {
+                startPage = "main";
+            }else{
+                applicationView.render();
+            }
         },
 
         showTalksListView: function(id){
-            var day = applicationView.conference.get('days').getByCid(id);
-            var talkListView = new TalkListView(day.get('talks'));
+            if (typeof applicationView === 'undefined') {
+                startPage = "#days/"+id;
+            }else{
+                var day = applicationView.conference.get('days').getByCid(id);
+                var talkListView = new TalkListView(day.get('talks'));
+            }
         },
 
         showTalkDetails: function(id){
-            var talk = applicationView.currentDay.get('talks').getByCid(id);
+            if (typeof applicationView === 'undefined') {
+                startPage = "#talks/"+id;
+            }else{
+                var talk = applicationView.currentDay.get('talks').getByCid(id);
 	        var talkDetailsView = new TalkDetailsView(talk);
+            }
         },
 
         showSpeakerDetails: function(id){
-            var speaker = applicationView.conference.get('speakers').getByCid(id);
+            if (typeof applicationView === 'undefined') {
+                startPage = "#speakers/"+id;
+            }else{
+                var speaker = applicationView.conference.get('speakers').getByCid(id);
 	        var speakerDetailsView = new SpeakerDetailsView(speaker);
+            }
         }
     });
 // Initiate the router

@@ -5,6 +5,7 @@ var ApplicationView = Backbone.View.extend(
             _.bindAll(this, 'prepareData');
 	    this.gdata = new GDataToJSONConverter();
 	    this.gdata.getDays(this.prepareData);
+            return this;
 	},
 
 	render: function() {
@@ -17,7 +18,11 @@ var ApplicationView = Backbone.View.extend(
 			                         days: days,
                                                  speakers: speakers
 		                             });
-//            appRouter.navigate("main", {trigger: true});
-            this.render();
+            if(startPage != 'main'){
+                appRouter.navigate('main', {trigger: true});
+            }else if(Backbone.history.getFragment() == 'main'){
+                this.render();
+            }
+            appRouter.navigate(startPage, {trigger: true});
         }
     });

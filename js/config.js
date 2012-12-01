@@ -4,3 +4,5 @@ googleSpreadSheet = {
     daysSheets: ['1', '2', '3'],
     speakersSheets: ['4']
 };
+startPage = 'main';
+
