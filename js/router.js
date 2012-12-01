@@ -2,6 +2,7 @@ var AppRouter = Backbone.Router.extend(
     {
         routes: {
             "main": "showHomePage",
+            "info": "showInfoPage",
             "days/:id": "showTalksListView",
             "talks/:id": "showTalkDetails",
             "speakers/:id": "showSpeakerDetails"
@@ -22,6 +23,14 @@ var AppRouter = Backbone.Router.extend(
                 startPage = "main";
             }else{
                 applicationView.render();
+            }
+        },
+
+        showInfoPage: function(){
+            if (typeof applicationView === 'undefined') {
+                startPage = "info";
+            }else{
+                var infoView = new InfoView();
             }
         },
 

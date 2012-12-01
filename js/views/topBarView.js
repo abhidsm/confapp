@@ -4,7 +4,8 @@ var TopBarView = Backbone.View.extend(
         className : "header", 
 
 	events : {
-            'click a': 'showHomePage'
+            'click a': 'showHomePage',
+            'click a.info': 'showInfoPage'
 	},
 
 	initialize : function() {
@@ -21,6 +22,10 @@ var TopBarView = Backbone.View.extend(
 
         showHomePage: function(){
             appRouter.navigate("main", {trigger: true});
+        },
+
+        showInfoPage: function(){
+            appRouter.navigate("info", {trigger: true});
         }
     });
   

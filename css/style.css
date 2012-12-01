@@ -80,3 +80,7 @@
 .dot{
     font-size: 3em;
 }
+
+#info .block {
+    text-align: center;
+}

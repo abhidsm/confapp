@@ -14,6 +14,7 @@ var HomePageView = Backbone.View.extend(
 	render : function(){
 	    this.$el.html(this.template);
             var topBarView = new TopBarView();
+            topBarView.$el.append($('<a href="#" data-icon="info" data-iconpos="notext" class="info"></a>'));
             this.$el.prepend(topBarView.$el);
             var self = this;
             this.days.each(
