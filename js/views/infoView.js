@@ -7,7 +7,7 @@ var InfoView = Backbone.View.extend(
 	},
 
 	initialize : function(speaker) {
-	    this.template = _.template($("#info-view-template").html(), {});
+	  this.template = _.template($("#info-view-template").html(), {info: applicationView.conference.get('info')});
 	    this.$el.attr('data-role', 'page');
 	    this.render();
 	},
