@@ -47,7 +47,12 @@ var AppRouter = Backbone.Router.extend(
             if (typeof applicationView === 'undefined') {
                 startPage = "#talks/"+id;
             }else{
-                var talk = applicationView.currentDay.get('talks').getByCid(id);
+                var talk = undefined;
+                for(var index in googleSpreadSheet.daysSheets){
+                    if(talk == undefined){
+                        talk = applicationView.conference.get('days').at(index).get('talks').getByCid(id);
+                    }
+                }
 	        var talkDetailsView = new TalkDetailsView(talk);
             }
         },
