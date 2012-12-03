@@ -20,7 +20,7 @@
     z-index: 999;
 }
 
-.home-page, #talk-list, .talk-title, .speaker-content{
+.home-page, #talk-list, .talk-title, .speaker-content, .info-details{
     margin-top: 44px !important;
 }
 

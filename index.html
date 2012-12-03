@@ -226,19 +226,10 @@
     </script>
 
     <script type="text/template" id="info-view-template">
-      <div class="ui-grid-a grid">
-        <div class="ui-block-a block talks-title"><strong>INFO</strong></div>
-      </div><!-- /grid-b -->
-      <div class="ui-grid-solo grid">
-        <div class="ui-block-a block">This very-much-in-alpha app is brought to you by the team </div>
-        <div class="ui-block-a block">@</div>
-        <div class="ui-block-a block">Multunus Software, Bangalore</div>
-        <div class="ui-block-a block">If you'd like to leave feedback, the best way would be to meet <strong>Vaidy, our CEO</strong> - who's also attending the conference.</div>
-        <div class="ui-block-a block">Here's how you can reach Vaidy:
-          twitter <a href="http://twitter.com/@vaidyatcr"
-                     data-theme="b"><em>@vaidyatcr</em></a> or <a href="mailto:vaidy@multunus.com">vaidy@multunus.com</a></div>
-        <div class="ui-block-a block">Alternatively, just write us on twitter <a href="http://twitter.com/@multunus" data-theme="b"><em>@multunus</em></a> or <a href="mailto:info@multunus.com">info@multunus.com</a></div>
-        <div class="ui-block-a block">Thanks!</div>
+      <div class="info-details ui-grid-solo grid">
+        <% for(var index in info){%>
+        <div class="ui-block-a block"><%= info[index] %></div>
+        <% }%>
       </div><!-- /grid-b -->
     </script>
 
