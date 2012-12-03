@@ -72,7 +72,7 @@ GDataToJSONConverter = function(){
 
     this.getSpreadSheetData = function(index, dataCallback){
         this.selfCallback = dataCallback;
-        self = this;
+        var self = this;
         $.getJSON("http://spreadsheets.google.com/feeds/list/" + googleSpreadSheet.key + "/" + index + "/public/values?alt=json-in-script&callback=?", function(data) {
                       self.selfCallback(data, index);
 		  });
@@ -99,8 +99,8 @@ GDataToJSONConverter = function(){
 };
 
 $(function(){
-      if($.browser.name == 'msie'){
-          $.mobile.showPageLoadingMsg( $.mobile.pageLoadErrorMessageTheme, "This Browser not yet supported", true );
+      if($.browser.name == 'msie' && $.browser.versionNumber <= 8){
+          $.mobile.showPageLoadingMsg( $.mobile.pageLoadErrorMessageTheme, "This Browser is not yet supported", true );
       }else{
           applicationView = new ApplicationView();
       }
