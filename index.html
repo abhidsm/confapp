@@ -136,12 +136,13 @@
     <script type="text/template" id="talkdetails-view-template">
       <div data-role="navbar">
         <ul class="talk-title">
-	  <li ><h4 class="ui-btn-up-c"><%= title %><em class="time"><%= time %></em></h4></li>
+	  <li ><h4 class="ui-btn-up-c"><%= title %></h4></li>
         </ul>
       </div><!-- /navbar -->
 
       <div class="ui-grid-a grid">
         <div class="ui-block-a block speakers"><strong><em>SPEAKERS</em></strong></div>
+        <div class="ui-block-b block time"><strong><em><%= time %></em></strong></div>
       </div><!-- /grid-b -->
 
       <div data-role="content">
