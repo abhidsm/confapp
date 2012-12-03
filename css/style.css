@@ -1,4 +1,4 @@
-#event .header h1, #speaker .header h1, #home .header h1, #talk-list .header h1 {
+#event .header h1, #speaker .header h1, #home .header h1, #talk-list .header h1, #info .header h1 {
    margin-left: 0px;
    margin-right: 0px;
 }
