@@ -4,8 +4,9 @@ var TopBarView = Backbone.View.extend(
         className : "header", 
 
 	events : {
-            'click a': 'showHomePage',
-            'click a.info': 'showInfoPage'
+            'click a.home': 'showHomePage',
+            'click a.info': 'showInfoPage',
+            'click a.back': 'showPreviousPage'
 	},
 
 	initialize : function() {
@@ -17,6 +18,11 @@ var TopBarView = Backbone.View.extend(
 
 	render : function(){
 	    this.$el.html(this.template);
+            if(currentView instanceof HomePageView){
+                this.$el.append($('<a href="#" data-icon="info" data-iconpos="notext" class="info"></a>'));
+            }else{
+                this.$el.append($('<a href="#" data-icon="back" data-iconpos="notext" class="back"></a>')); 
+            }
 	    return this;
 	},
 
@@ -26,6 +32,10 @@ var TopBarView = Backbone.View.extend(
 
         showInfoPage: function(){
             appRouter.navigate("info", {trigger: true});
+        },
+
+        showPreviousPage: function(){
+            history.back();
         }
     });
   

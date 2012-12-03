@@ -14,6 +14,7 @@ var InfoView = Backbone.View.extend(
 
 	render : function(){
 	    this.$el.html(this.template);
+            currentView = this;
             var topBarView = new TopBarView();
             this.$el.prepend(topBarView.$el);
 	    $('body').append(this.$el);

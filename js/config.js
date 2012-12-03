@@ -6,4 +6,5 @@ googleSpreadSheet = {
     infoSheet: ['5']
 };
 startPage = 'main';
+currentView = null;
 
