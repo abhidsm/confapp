@@ -7,8 +7,9 @@
    padding: 2%;
 }
 
-.grid .block.time {
+em.time {
    color: red;
+   float: right;
 }
 
 .header{
@@ -83,4 +84,9 @@
 
 #info .block {
     text-align: center;
+}
+
+.talk-title h4 {
+    margin: 0px;
+    padding: 10px;
 }

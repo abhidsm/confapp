@@ -4,7 +4,6 @@ var TalkDetailsView = Backbone.View.extend(
 	id : 'event',
 
 	events : {
-          'click .talk-title a': 'showTalksView'
 	},
 
 	initialize : function(talk) {
@@ -26,11 +25,6 @@ var TalkDetailsView = Backbone.View.extend(
                 });
 	    $('body').append(this.$el);
 	    $.mobile.changePage(this.$el, {changeHash:false});
-	},
-
-	showTalksView: function() {
-          appRouter.navigate("#days/"+applicationView.currentDay.cid, {trigger: true});
-//          var talkListView = new TalkListView(applicationView.currentDay.get('talks'));
 	}
 	
     });
