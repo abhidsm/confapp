@@ -117,6 +117,10 @@ $(function(){
       }else{
           applicationView = new ApplicationView();
       }
+
+      $('div[data-role="page"]').live('pagehide', function () {
+                          $(this).remove();
+                      });
   });
 
 
