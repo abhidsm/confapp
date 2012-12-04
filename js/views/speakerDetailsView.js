@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'views/topBarView', 'views/talkView', 'jqm'], function($, _, Backbone, TopBarView, TalkView){
+define(['jquery', 'underscore', 'backbone', 'views/topBarView', 'views/talkView', 'text!templates/speaker_details_view.html', 'jqm'], function($, _, Backbone, TopBarView, TalkView, speakerDetailsViewTemplate){
            var SpeakerDetailsView = Backbone.View.extend(
                {
 	           tagName : "div",
@@ -9,7 +9,7 @@ define(['jquery', 'underscore', 'backbone', 'views/topBarView', 'views/talkView'
 
 	           initialize : function(speaker) {
 	               this.speaker = speaker;
-	               this.template = _.template($("#speakerdetails-view-template").html(), this.speaker.toJSON());
+	               this.template = _.template(speakerDetailsViewTemplate, this.speaker.toJSON());
 	               this.$el.attr('data-role', 'page');
 	               this.render();
 	           },

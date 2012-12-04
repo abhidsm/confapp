@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'views/topBarView', 'jqm'], function($, _, Backbone, TopBarView){
+define(['jquery', 'underscore', 'backbone', 'views/topBarView', 'text!templates/info_view.html', 'jqm'], function($, _, Backbone, TopBarView, infoViewTemplate){
            var InfoView = Backbone.View.extend(
                {
 	           tagName : "div",
@@ -8,7 +8,7 @@ define(['jquery', 'underscore', 'backbone', 'views/topBarView', 'jqm'], function
 	           },
 
 	           initialize : function(speaker) {
-	               this.template = _.template($("#info-view-template").html(), {info: applicationView.conference.get('info')});
+	               this.template = _.template(infoViewTemplate, {info: applicationView.conference.get('info')});
 	               this.$el.attr('data-role', 'page');
 	               this.render();
 	           },

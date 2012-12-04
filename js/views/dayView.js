@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone'], function($, _, Backbone){
+define(['jquery', 'underscore', 'backbone', 'text!templates/day.html'], function($, _, Backbone, dayTemplate){
            var DayView = Backbone.View.extend(
                {
 	           tagName : "li",
@@ -10,7 +10,7 @@ define(['jquery', 'underscore', 'backbone'], function($, _, Backbone){
 
 	           initialize : function(day) {
                        this.day = day;
-                       this.template = _.template($("#day-template").html(),{day: this.day});
+                       this.template = _.template(dayTemplate,{day: this.day});
 	               this.render();
 	           },
 

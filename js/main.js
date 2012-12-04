@@ -5,7 +5,8 @@ require.config(
             "jquery": "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min",
             "jqm": "http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min",
 	    "underscore": "lib/underscore", 
-	    "backbone": "lib/backbone"
+	    "backbone": "lib/backbone",
+            "text": "lib/text"
         },
 	'shim': 
 	{

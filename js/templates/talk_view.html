@@ -1,0 +1,13 @@
+<a href="#">
+  <h3 class="program-name"><%= title %></h3>
+  <p class="speakers-name">
+    <%=
+       speakers.map(
+                    function(speaker){
+                      return " "+speaker.get('name');
+       })
+                    %>
+  </p>
+  <p class="time"><%= time %></p>
+</a>
+<a href="#" data-iconpos="notext"></a>

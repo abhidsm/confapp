@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone'], function($, _, Backbone){
+define(['jquery', 'underscore', 'backbone', 'text!templates/talk_view.html', 'text!templates/talkbyspeaker_view.html'], function($, _, Backbone, talkViewTemplate, talkBySpeakerViewTemplate){
            var TalkView = Backbone.View.extend(
                {
 	           tagName : "li",
@@ -9,11 +9,11 @@ define(['jquery', 'underscore', 'backbone'], function($, _, Backbone){
 
 	           initialize : function(talk, from) {
                        this.talk = talk;
-                       var templateName = "#talk-view-template";
+                       var htmlTemplate = talkViewTemplate;
                        if(from == 'speaker-details'){
-                           templateName = "#talkbyspeaker-view-template";
+                           htmlTemplate = talkBySpeakerViewTemplate;
                        }
-                       this.template = _.template($(templateName).html(), this.talk.toJSON());
+                       this.template = _.template(htmlTemplate, this.talk.toJSON());
 	               this.render();
 	           },
 

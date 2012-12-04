@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'views/homePageView'], function($, _, Backbone, HomePageView){
+define(['jquery', 'underscore', 'backbone', 'views/homePageView', 'text!templates/top_bar.html'], function($, _, Backbone, HomePageView, topBarTemplate){
            var TopBarView = Backbone.View.extend(
                {
 	           tagName : "div",
@@ -11,7 +11,7 @@ define(['jquery', 'underscore', 'backbone', 'views/homePageView'], function($, _
 	           },
 
 	           initialize : function() {
-                       this.template = _.template($("#topbar-view-template").html(),{});
+                       this.template = _.template(topBarTemplate,{});
 	               this.$el.attr('data-role', 'header');
 	               this.$el.attr('data-theme', 'b');
 	               this.render();

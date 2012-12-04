@@ -1,0 +1,25 @@
+<div data-role="navbar">
+  <ul class="talk-title">
+    <li ><h4 class="ui-btn-up-c"><%= title %></h4></li>
+  </ul>
+</div><!-- /navbar -->
+
+<div class="ui-grid-a grid">
+  <div class="ui-block-a block speakers"><strong><em>SPEAKERS</em></strong></div>
+  <div class="ui-block-b block time"><strong><em><%= time %></em></strong></div>
+</div><!-- /grid-b -->
+
+<div data-role="content">
+  <div class="content-primary">
+    <ul data-role="listview" data-split-icon="arrow-r"
+        data-split-theme="a" data-theme="a">
+    </ul>
+  </div>
+</div><!-- /content -->
+
+<div class="ui-grid-a grid">
+  <div class="ui-block-a block description-title"><strong><em>DESCRIPTION</em></strong></div>
+</div><!-- /grid-b -->
+<div class="ui-grid-solo grid">
+  <div class="ui-block-a block description"><%= description %></div>
+</div><!-- /grid-b -->

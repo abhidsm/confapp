@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'views/topBarView', 'views/dayView', 'jqm'], function($, _, Backbone, TopBarView, DayView){
+define(['jquery', 'underscore', 'backbone', 'views/topBarView', 'views/dayView', 'text!templates/home_page.html', 'jqm'], function($, _, Backbone, TopBarView, DayView, homePageTemplate){
            var HomePageView = Backbone.View.extend(
                {
 	           tagName : "div",
@@ -7,7 +7,7 @@ define(['jquery', 'underscore', 'backbone', 'views/topBarView', 'views/dayView',
 
 	           initialize : function(conference) {
                        this.days = conference.get('days');
-	               this.template = _.template($("#home-page-template").html(),{days: this.days});
+	               this.template = _.template(homePageTemplate,{days: this.days});
 	               this.$el.attr('data-role', 'page');
 	               this.render();
 	           },

@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'views/topBarView', 'views/talkView', 'jqm'], function($, _, Backbone, TopBarView, TalkView){
+define(['jquery', 'underscore', 'backbone', 'views/topBarView', 'views/talkView', 'text!templates/talklist_view.html', 'jqm'], function($, _, Backbone, TopBarView, TalkView, talklistViewTemplate){
            var TalkListView = Backbone.View.extend(
                {
 	           tagName : "div",
@@ -6,7 +6,7 @@ define(['jquery', 'underscore', 'backbone', 'views/topBarView', 'views/talkView'
 
 	           initialize : function(talks) {
                        this.talks = talks;
-	               this.template = _.template($("#talklist-view-template").html(),{daytitle: applicationView.currentDay.get('title')});
+	               this.template = _.template(talklistViewTemplate,{daytitle: applicationView.currentDay.get('title')});
 	               this.$el.attr('data-role', 'page');
 	               this.render();
 	           },
