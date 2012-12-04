@@ -15,7 +15,7 @@
     </script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/lib/jquery.reject.min.js"></script>
-    <script type="text/javascript"><!-- Overriding jQuery mobile routing mechanism -->
+<!--    <script type="text/javascript"><!-- Overriding jQuery mobile routing mechanism 
       //removed this part
       document.addEventListener("backbutton", function(){
       if (window.history.length > 0) {
@@ -37,21 +37,24 @@
       });
     </script>
 
-    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+ <script type="text/javascript" src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
     <script type="text/javascript" src="js/lib/underscore.js"></script>
     <script type="text/javascript" src="js/lib/backbone.js"></script>
-    <script type="text/javascript" src="js/lib/backbone-relational.js"></script>
+    <script type="text/javascript" src="js/lib/backbone-relational.js"></script> -->
     <script type="text/javascript" src="js/config.js"></script>
-    <script type="text/javascript" src="js/models/day.js"></script>
+
+<!--    <script type="text/javascript" src="js/models/day.js"></script>
     <script type="text/javascript" src="js/models/conference.js"></script>
     <script type="text/javascript" src="js/models/talk.js"></script>
     <script type="text/javascript" src="js/models/speaker.js"></script>
     <script type="text/javascript" src="js/collections/days.js"></script>
     <script type="text/javascript" src="js/collections/talks.js"></script>
     <script type="text/javascript" src="js/collections/speakers.js"></script>
+
+    <script type="text/javascript" src="js/gdataToJSONConverter.js"></script>
+
     <script type="text/javascript" src="js/views/topBarView.js"></script>
-    <script type="text/javascript" src="js/views/homePageView.js"></script>
-    <script type="text/javascript" src="js/views/applicationView.js"></script>
+    <script type="text/javascript" src="js/views/homePageView.js"></script> 
     <script type="text/javascript" src="js/views/dayView.js"></script>
     <script type="text/javascript" src="js/views/talkListView.js"></script>
     <script type="text/javascript" src="js/views/talkView.js"></script>
@@ -59,6 +62,8 @@
     <script type="text/javascript" src="js/views/speakerView.js"></script>
     <script type="text/javascript" src="js/views/speakerDetailsView.js"></script>
     <script type="text/javascript" src="js/views/infoView.js"></script>
+
+    <script type="text/javascript" src="js/views/applicationView.js"></script>-->
   </head>
   <body>
 
@@ -244,7 +249,8 @@
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
     </script>
-    <script type="text/javascript" src="js/router.js"></script>
-    <script type="text/javascript" src="js/application.js"></script>
+<!--    <script type="text/javascript" src="js/application.js"></script>
+    <script type="text/javascript" src="js/router.js"></script>-->
+    <script data-main="js/main" src="js/lib/require-jquery.js"></script>
   </body>
 </html>
