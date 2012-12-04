@@ -23,7 +23,7 @@
   <% if(twitterid.length == 0){ %>
   <a href="#" data-theme="b"><em>&nbsp;</em></a>
 <%}else{%>
-<a href="http://twitter.com/<%= twitterid %>"
+<a href="http://twitter.com/<%= twitterid.slice(1) %>"
    data-theme="b"><em><%= twitterid %></em></a>
 <%}%>
 </li>
