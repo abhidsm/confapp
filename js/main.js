@@ -6,7 +6,8 @@ require.config(
             "jqm": "http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min",
 	    "underscore": "lib/underscore", 
 	    "backbone": "lib/backbone",
-            "text": "lib/text"
+            "text": "lib/text",
+            "reject": "lib/jquery.reject.min"
         },
 	'shim': 
 	{
@@ -16,13 +17,23 @@ require.config(
 	    },
 	    underscore: {
 		'exports': '_'
+	    },
+	    reject: {
+		'deps': ['jquery']
+	    },
+	    jqm: {
+		'deps': ['jqm-config']
 	    }
 	}	
     }); 
 
 require([
-	    'application', 'jqm-config'
+	    'application', 'reject', 'jqm'
 	], 
 	function(Application){
-	    var app = new Application();
+            if($.browser.name == 'msie' && $.browser.versionNumber <= 8){
+                $.mobile.showPageLoadingMsg( $.mobile.pageLoadErrorMessageTheme, "This Browser is not yet supported", true );
+            }else{
+	        var app = new Application();
+            }
         });

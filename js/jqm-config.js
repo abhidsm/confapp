@@ -1,12 +1,17 @@
 define(['jquery'], function($){ 
            //removed this part
-           document.addEventListener("backbutton", function(){
-                                         if (window.history.length > 0) {
-                                             window.history.back();
-                                             return false;
-                                         }
-                                         navigator.app.exitApp();
-                                     }, true);
+           try{
+               document.addEventListener("backbutton", function(){
+                                             if (window.history.length > 0) {
+                                                 window.history.back();
+                                                 return false;
+                                             }
+                                             navigator.app.exitApp();
+                                         }, true);
+               
+           } catch (x) {
+               //Error message
+           }
 
            // Since we are using the backbone router we want to disable
            // auto link routing of jquery mobile.
