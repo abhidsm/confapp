@@ -44,6 +44,7 @@
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/models/day.js"></script>
     <script type="text/javascript" src="js/models/conference.js"></script>
+    <script type="text/javascript" src="js/models/talksBySpeakers.js"></script>
     <script type="text/javascript" src="js/models/talk.js"></script>
     <script type="text/javascript" src="js/models/speaker.js"></script>
     <script type="text/javascript" src="js/collections/days.js"></script>
@@ -120,16 +121,16 @@
 
     <script type="text/template" id="talk-view-template">
       <a href="#">
-        <h3 class="program-name"><%= title %></h3>
+        <h3 class="program-name"><%= talk.get('title') %></h3>
         <p class="speakers-name">
           <%=
-              speakers.map(
+              talk.get('speakers').map(
                            function(speaker){
-                             return " "+speaker.get('name');
+                             return " "+speaker.get('speaker').get('name');
                            })
           %>
         </p>
-        <p class="time"><%= time %></p>
+        <p class="time"><%= talk.get('time') %></p>
       </a>
       <a href="#" data-iconpos="notext"></a>
     </script>
@@ -223,7 +224,7 @@
     </script>
 
     <script type="text/template" id="talkbyspeaker-view-template">
-      <a href="#" data-theme="b"><%= title %></a>
+      <a href="#" data-theme="b"><%= talk.get('title') %></a>
     </script>
 
     <script type="text/template" id="info-view-template">

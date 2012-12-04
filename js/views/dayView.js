@@ -19,7 +19,6 @@ var DayView = Backbone.View.extend(
 	},
 
 	showTalksView: function() {
-	    applicationView.currentDay = this.day;
             appRouter.navigate("#days/"+this.day.cid, {trigger: true});
 //            var talkListView = new TalkListView(this.day.get('talks'));
 	}

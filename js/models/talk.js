@@ -1,6 +1,15 @@
-var Talk = Backbone.Model.extend({
-	initialize : function() {
-	},
-	defaults : {
-	}
+var Talk =  Backbone.RelationalModel.extend({
+                                                
+  relations:[
+      {
+          type: 'HasMany',
+          key: 'speakers',
+          relatedModel: 'TalksBySpeakers',
+          includeInJSON: false,
+          reverseRelation: {
+              key: 'talk'
+          }
+      }
+  ]
+
 });

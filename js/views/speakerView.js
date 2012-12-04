@@ -8,7 +8,7 @@ var SpeakerView = Backbone.View.extend(
 
 	initialize : function(speaker) {
             this.speaker = speaker;
-            this.template = _.template($("#speaker-view-template").html(), this.speaker.toJSON());
+            this.template = _.template($("#speaker-view-template").html(), this.speaker.toJSON().speaker);
 	    this.render();
 	},
 
@@ -18,7 +18,7 @@ var SpeakerView = Backbone.View.extend(
 	},
 
 	showSpeakerDetailsView: function() {
-            appRouter.navigate("#speakers/"+this.speaker.cid, {trigger: true});
+            appRouter.navigate("#speakers/"+this.speaker.get('speaker').cid, {trigger: true});
 //	    var speakerDetailsView = new SpeakerDetailsView(this.speaker);
 	}
     });

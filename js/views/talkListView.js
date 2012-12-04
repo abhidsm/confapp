@@ -5,7 +5,7 @@ var TalkListView = Backbone.View.extend(
 
 	initialize : function(talks) {
             this.talks = talks;
-	    this.template = _.template($("#talklist-view-template").html(),{daytitle: applicationView.currentDay.get('title')});
+	    this.template = _.template($("#talklist-view-template").html(),{daytitle: this.talks.at(0).get('day').get('title')});
 	    this.$el.attr('data-role', 'page');
 	    this.render();
 	},

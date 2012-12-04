@@ -1,6 +1,15 @@
-var Day = Backbone.Model.extend({
-	initialize : function() {
-	},
-	defaults : {
-	}
+var Day =  Backbone.RelationalModel.extend({
+
+  relations:[
+      {
+          type: 'HasMany',
+          key: 'talks',
+          relatedModel: 'Talk',
+          includeInJSON: false,
+          reverseRelation: {
+              key: 'day'
+          }
+      }
+  ]
+
 });

@@ -12,13 +12,9 @@ var ApplicationView = Backbone.View.extend(
 	    this.homePageView = new HomePageView(this.conference);
 	},
         
-        prepareData: function(days, speakers, info){
-	    this.currentDay = days.at(0);
-            this.conference = new Conference({
-			                         days: days,
-                                                 speakers: speakers,
-                                                 info: info
-		                             });
+        prepareData: function(conference){
+            this.conference = conference;
+
             if(startPage != 'main'){
                 appRouter.navigate('main', {trigger: true});
             }else if(Backbone.history.getFragment() == 'main'){

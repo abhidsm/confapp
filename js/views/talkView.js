@@ -12,7 +12,7 @@ var TalkView = Backbone.View.extend(
             if(from == 'speaker-details'){
                 templateName = "#talkbyspeaker-view-template";
             }
-            this.template = _.template($(templateName).html(), this.talk.toJSON());
+          this.template = _.template($(templateName).html(), { talk: this.talk });
 	    this.render();
 	},
 

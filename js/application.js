@@ -7,11 +7,11 @@ GDataToJSONConverter = function(){
 	    var entry = data.feed.entry[ l ];
 	    info.push(entry.gsx$info.$t);
 	}
+        this.conference.set('info', info);
 	return info;
     };
 
     this.getSpeakers = function(data) {
-	var speakers = new Speakers();
 	for( var l in data.feed.entry )
 	{
 	    var entry = data.feed.entry[ l ];
@@ -21,21 +21,19 @@ GDataToJSONConverter = function(){
                                           image: entry.gsx$image.$t,
                                           about: entry.gsx$about.$t,
                                           companyurl: entry.gsx$companyurl.$t,
-                                          twitterid: entry.gsx$twitterid.$t,
-                                          talks: new Talks()
+                                          twitterid: entry.gsx$twitterid.$t
 			              });
-	    speakers.push(speaker);
+	    this.conference.get('speakers').add(speaker);
 	}
-	return speakers;
+	return this.conference.get('speakers');
     };
 
     this.getSpeakersForTalk = function(entry, talk) {
         var speakerIds = entry.gsx$speakers.$t.split(",");
-        var speakers = new Speakers();
+        var speakers = [];
         for(var index in speakerIds){
             var speaker = this.speakers.at(parseInt(speakerIds[index])-1);
-            speaker.get('talks').push(talk);
-            speakers.push(speaker);
+            speakers.push({speaker: speaker});
         }
         return speakers;
     };
@@ -46,12 +44,12 @@ GDataToJSONConverter = function(){
 			        description: entry.gsx$description.$t,
                                 time: entry.gsx$time.$t
 		            });
-        talk.set('speakers', this.getSpeakersForTalk(entry, talk));
+        talk.get('speakers').add(this.getSpeakersForTalk(entry, talk));
 	return talk;
     };	
 
     this.getTalks = function(data) {
-	var talks = new Talks();
+	var talks = [];
 	for( var l in data.feed.entry )
 	{
 	    var entry = data.feed.entry[ l ];
@@ -65,18 +63,20 @@ GDataToJSONConverter = function(){
     this.getDay = function(data) {
 	var self = this;
 	day = new Day({
-			  title: data.feed.title.$t,
-			  talks: self.getTalks(data)
+			  title: data.feed.title.$t
 		      });
+
+        day.get('talks').add(self.getTalks(data));
 	return day;
     };
 
     this.getDays = function(callback) {
-	this.days = new Days();
+
+        this.conference = new Conference();
+
         this.callback = callback;
         this.daysArr = []; 
 	this.getSpreadSheetData(googleSpreadSheet.infoSheet[0], this.prepareInfodata);
-	return this.days;
     };
 
     this.getSpreadSheetData = function(index, dataCallback){
@@ -100,8 +100,8 @@ GDataToJSONConverter = function(){
         self.daysArr[parseInt(index)] = day;
         var currentLength = self.daysArr.filter(function(value) { return value !== undefined; }).length;
         if( currentLength == googleSpreadSheet.daysSheets.length){
-            self.days.add(self.daysArr);
-	    self.callback(self.days, self.speakers, self.info);
+            self.conference.get('days').add(self.daysArr);
+	    self.callback(self.conference);
         }
     };
 
