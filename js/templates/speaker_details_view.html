@@ -41,8 +41,12 @@
 <div class="ui-grid-a grid">
   <div class="ui-block-a block about-title"><strong>ABOUT</strong></div>
 </div><!-- /grid-b -->
+<% var aboutArr = about.split('\n') %>
+<% aboutArr = aboutArr.filter(function(data){return data.length != 0}) %>
+<% for(var i in aboutArr){ %>
 <div class="ui-grid-solo grid">
   <div class="ui-block-a block about">
-    <%= about %>
+    <%= aboutArr[i] %>
   </div>
 </div><!-- /grid-b -->
+<%}%>

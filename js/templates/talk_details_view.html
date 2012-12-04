@@ -20,6 +20,10 @@
 <div class="ui-grid-a grid">
   <div class="ui-block-a block description-title"><strong><em>DESCRIPTION</em></strong></div>
 </div><!-- /grid-b -->
+<% var descriptionArr = description.split('\n') %>
+<% descriptionArr = descriptionArr.filter(function(data){return data.length != 0}) %>
+<% for(var i in descriptionArr){ %>
 <div class="ui-grid-solo grid">
-  <div class="ui-block-a block description"><%= description %></div>
+  <div class="ui-block-a block description"><%= descriptionArr[i] %></div>
 </div><!-- /grid-b -->
+<%}%>
