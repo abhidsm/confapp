@@ -1,0 +1,13 @@
+<a href="#">
+  <h3 class="program-name"><%= talk.get('title') %></h3>
+  <p class="speakers-name">
+    <%=
+       talk.get('speakers').map(
+                    function(speaker){
+                      return " "+speaker.get('speaker').get('name');
+       })
+                    %>
+  </p>
+  <p class="time"><%= talk.get('time') %></p>
+</a>
+<a href="#" data-iconpos="notext"></a>

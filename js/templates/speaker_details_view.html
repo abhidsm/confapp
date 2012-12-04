@@ -1,0 +1,52 @@
+<div data-role="content" class="speaker-content">
+  <div class="content-primary">
+    <ul data-role="listview" data-split-icon="arrow-r"
+        data-split-theme="a" data-theme="a">
+      <li>
+	<img src="<%= image %>" />
+	<h3><%= name %></h3>
+	<p><%= company %></p>
+      </li>
+    </ul>
+  </div>
+</div><!-- /content -->
+<div data-role="navbar">
+  <ul>
+    <li>
+      <% if(companyurl.length == 0){ %>
+      <a href="#" data-theme="b"><em>&nbsp;</em></a>
+<%}else{%>
+<a href="http://<%= companyurl %>" data-theme="b"><em><%= companyurl %></em></a>
+<%}%>
+</li>
+<li>
+  <% if(twitterid.length == 0){ %>
+  <a href="#" data-theme="b"><em>&nbsp;</em></a>
+<%}else{%>
+<a href="http://twitter.com/<%= twitterid.slice(1) %>"
+   data-theme="b"><em><%= twitterid %></em></a>
+<%}%>
+</li>
+</ul>
+</div><!-- /navbar -->
+
+<div class="ui-grid-a grid">
+  <div class="ui-block-a block talks-title"><strong>TALKS</strong></div>
+</div><!-- /grid-b -->
+<div data-role="navbar" class="talks">
+
+</div><!-- /navbar -->
+
+
+<div class="ui-grid-a grid">
+  <div class="ui-block-a block about-title"><strong>ABOUT</strong></div>
+</div><!-- /grid-b -->
+<% var aboutArr = about.split('\n') %>
+<% aboutArr = aboutArr.filter(function(data){return data.length != 0}) %>
+<% for(var i in aboutArr){ %>
+<div class="ui-grid-solo grid">
+  <div class="ui-block-a block about">
+    <%= aboutArr[i] %>
+  </div>
+</div><!-- /grid-b -->
+<%}%>
